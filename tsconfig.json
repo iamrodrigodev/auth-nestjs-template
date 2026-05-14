@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "paths": {
+      "@app/*": ["./src/*"],
+      "@auth/*": ["./src/auth/*"],
+      "@common/*": ["./src/common/*"],
+      "@config/*": ["./src/config/*"],
+      "@entities/*": ["./src/auth/entities/*"],
+      "@dto/*": ["./src/auth/dto/*"],
+      "@enums/*": ["./src/auth/enums/*"],
+      "@interfaces/*": ["./src/common/interfaces/*"],
+      "@guards/*": ["./src/common/guards/*"],
+      "@decorators/*": ["./src/common/decorators/*"],
+      "@services/*": ["./src/common/services/*"],
+      "@security/*": ["./src/common/security/*"],
+      "@filters/*": ["./src/common/filters/*"],
+      "@interceptors/*": ["./src/common/interceptors/*"],
+      "@constants/*": ["./src/common/constants/*"]
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}

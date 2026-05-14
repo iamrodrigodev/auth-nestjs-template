@@ -1,0 +1,120 @@
+{
+  "info": {
+    "name": "Auth NestJS APIs",
+    "description": "Colección de endpoints correspondientes al proyecto Auth de NestJS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "Registrar Cuenta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"usuario@correo.com\",\n  \"nombres\": \"Juan\",\n  \"apellidos\": \"Perez\",\n  \"contrasena\": \"Prueba123*\",\n  \"roles\": [\"USUARIO\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/autenticacion/registrar-cuenta",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "registrar-cuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Iniciar Sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseJson = pm.response.json();",
+                  "if (responseJson.datos && responseJson.datos.tokenAcceso) {",
+                  "    pm.collectionVariables.set(\"token\", responseJson.datos.tokenAcceso);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"usuario.prueba@plantilla.local\",\n  \"contrasena\": \"Prueba123*\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/autenticacion/iniciar-sesion",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "iniciar-sesion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Perfil",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/autenticacion/perfil",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "perfil"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
